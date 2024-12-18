@@ -1,0 +1,10 @@
+{
+  "welcome": "Hoş geldiniz",
+  "hello": "Merhaba {name}!",
+  "appName": "Varlık Yönetici",
+  "email": "Email",
+  "password": "Şifre",
+  "login": "Giriş Yap",
+  "register": "Kayıt Ol",
+  "logout": "Çıkış Yap"
+}

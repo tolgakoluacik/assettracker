@@ -1,5 +1,6 @@
 import 'package:asset_tracker/widgets/custom_button.dart';
 import 'package:asset_tracker/widgets/custom_text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -22,18 +23,18 @@ class LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextField(
-              labelText: 'Email',
+              labelText: 'email'.tr(),
               controller: emailController,
             ),
-            const CustomTextField(
-              labelText: 'Password',
+            CustomTextField(
+              labelText: 'password'.tr(),
               obscureText: true,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomButtonField(
-                  buttonText: 'Login',
+                  buttonText: 'login'.tr(),
                   icon: Icons.login,
                   onPressed: () {
                     final email = emailController.text;
@@ -49,7 +50,7 @@ class LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 CustomButtonField(
-                  buttonText: 'Register',
+                  buttonText: 'register'.tr(),
                   icon: Icons.login,
                   onPressed: () {},
                 ),

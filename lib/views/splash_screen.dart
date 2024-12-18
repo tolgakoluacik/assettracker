@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'login_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,18 +28,16 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.amber,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.white),
-            SizedBox(height: 20),
-            Text(
-              'Asset Tracker',
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
+            const Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.white),
+            const SizedBox(height: 20),
+            Text("appName".tr(),
+            )
           ],
         ),
       ),

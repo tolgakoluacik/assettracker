@@ -1,5 +1,6 @@
 import 'package:asset_tracker/views/login_screen.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,14 +36,7 @@ class HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                'Hoşgeldiniz $email',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              const Text('hello').tr(namedArgs: {'name': email}),
             ],
           ),
           const SizedBox(
@@ -52,7 +46,7 @@ class HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomButtonField(
-                buttonText: 'Logout',
+                buttonText: 'logout'.tr(),
                 icon: Icons.logout_outlined,
                 onPressed: () {
                   Navigator.pushReplacement(
