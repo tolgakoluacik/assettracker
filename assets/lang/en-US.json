@@ -2,9 +2,13 @@
   "welcome": "Welcome",
   "hello": "Hello {name}!",
   "appName": "Asset Tracker",
-  "email": "Email",
-  "password": "Password",
   "login": "Login",
   "register": "Register",
-  "logout": "Logout"
+  "logout": "Logout",
+  "email": "Email",
+  "emailValid": "Enter valid email, please!",
+  "emailRequired" : "Email is required!",
+  "password": "Password",
+  "passwordRequired": "Password is required!",
+  "passwordMinLength": "Password has to minimum {} character!"
 }

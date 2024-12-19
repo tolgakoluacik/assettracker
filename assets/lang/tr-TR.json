@@ -2,9 +2,13 @@
   "welcome": "Hoş geldiniz",
   "hello": "Merhaba {name}!",
   "appName": "Varlık Yönetici",
-  "email": "Email",
-  "password": "Şifre",
   "login": "Giriş Yap",
   "register": "Kayıt Ol",
-  "logout": "Çıkış Yap"
+  "logout": "Çıkış Yap",
+  "email": "Email",
+  "emailValid": "Lütfen geçerli bir email giriniz!",
+  "emailRequired" : "Email alanı gereklidir!",
+  "password": "Şifre",
+  "passwordRequired": "Şifre alanı gereklidir!",
+  "passwordMinLength": "Şifreniz minimum {} karakterden oluşmalıdır!"
 }

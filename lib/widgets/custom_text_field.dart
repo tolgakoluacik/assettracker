@@ -4,19 +4,21 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final bool obscureText;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   const CustomTextField({
     super.key,
     required this.labelText,
     this.obscureText = false,
     this.controller,
+    this.validator
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         obscureText: obscureText,
         style: const TextStyle(
@@ -39,6 +41,7 @@ class CustomTextField extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
         ),
+        validator: validator,
       ),
     );
   }
