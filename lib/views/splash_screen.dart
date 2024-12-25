@@ -29,14 +29,17 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.white),
+            const Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.deepPurple),
             const SizedBox(height: 20),
             Text("appName".tr(),
+              style: const TextStyle(color: Colors.deepPurple,
+              fontSize: 26,
+              fontWeight: FontWeight.bold),
             )
           ],
         ),

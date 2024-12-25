@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         style: const TextStyle(
-          color: Colors.white,
+          color: Colors.deepPurple,
         ),
         decoration: InputDecoration(
           constraints: const BoxConstraints(maxWidth: 500),

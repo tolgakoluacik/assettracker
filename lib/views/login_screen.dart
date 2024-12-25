@@ -1,9 +1,10 @@
+import 'package:asset_tracker/views/splash_screen.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
 import 'package:asset_tracker/widgets/email_text_field.dart';
 import 'package:asset_tracker/widgets/password_text_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import '../widgets/login_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,7 +22,7 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       body: Center(
         child: Form(
           key: _formKey,
@@ -37,32 +38,21 @@ class LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomButtonField(
-                    buttonText: 'login'.tr(),
-                    icon: Icons.login,
-                    onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {
-                      final email = emailController.text;
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
-                      );
-
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(
-                            email: email,
-                          ),
-                        ),
-                      );
-                    };
-                  },
+                  LoginButton(
+                    formKey: _formKey,
+                    emailController: emailController,
                   ),
                   CustomButtonField(
                     buttonText: 'register'.tr(),
-                    icon: Icons.login,
-                    onPressed: () {},
+                    icon: Icons.app_registration,
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SplashScreen(),
+                        ),
+                      );
+                      },
                   ),
                 ],
               )
