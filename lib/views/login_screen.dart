@@ -1,6 +1,7 @@
 import 'package:asset_tracker/views/splash_screen.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
 import 'package:asset_tracker/widgets/email_text_field.dart';
+import 'package:asset_tracker/widgets/empty_size.dart';
 import 'package:asset_tracker/widgets/password_text_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class LoginScreenState extends State<LoginScreen> {
                     formKey: _formKey,
                     emailController: emailController,
                   ),
+                  EmptySize.small,
                   CustomButtonField(
                     buttonText: 'register'.tr(),
                     icon: Icons.app_registration,

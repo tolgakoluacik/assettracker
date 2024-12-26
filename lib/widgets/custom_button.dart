@@ -1,3 +1,4 @@
+import 'package:asset_tracker/constants/app_edge_insets.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtonField extends StatelessWidget {
@@ -14,28 +15,15 @@ class CustomButtonField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: ElevatedButton(
+    return ElevatedButton.icon(
         onPressed: onPressed,
+        icon: Icon(icon),
+        label: Text(buttonText),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           foregroundColor: Colors.deepPurple,
-          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+          padding: ResponsiveAppEdgeInsets.mediumPadding
         ),
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              color: Colors.deepPurple,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Text(buttonText,),
-          ],
-        ),
-      ),
-    );
+      );
   }
 }

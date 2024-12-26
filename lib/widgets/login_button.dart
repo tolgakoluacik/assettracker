@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import '../constants/app_edge_insets.dart';
 import '../views/home.dart';
 
 class LoginButton extends StatelessWidget {
@@ -34,7 +35,7 @@ class LoginButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+        padding: ResponsiveAppEdgeInsets.mediumPadding,
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:asset_tracker/views/login_screen.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
+import 'package:asset_tracker/widgets/empty_size.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -39,9 +40,7 @@ class HomeScreenState extends State<HomeScreen> {
               const Text('hello').tr(namedArgs: {'name': email}),
             ],
           ),
-          const SizedBox(
-            height: 150.0,
-          ),
+          EmptySize.large,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

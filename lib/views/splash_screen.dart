@@ -1,3 +1,6 @@
+import 'package:asset_tracker/constants/app_constants.dart';
+import 'package:asset_tracker/constants/app_sizes.dart';
+import 'package:asset_tracker/widgets/empty_size.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'login_screen.dart';
@@ -18,7 +21,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void _startSplashScreen() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: AppConstants.splashScreenWaitTime), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -34,11 +37,11 @@ class SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.deepPurple),
-            const SizedBox(height: 20),
+            const Icon(Icons.monitor_heart_outlined, size: AppIconSizes.medium, color: Colors.deepPurple),
+            EmptySize.small,
             Text("appName".tr(),
               style: const TextStyle(color: Colors.deepPurple,
-              fontSize: 26,
+              fontSize: AppTextSizes.medium,
               fontWeight: FontWeight.bold),
             )
           ],
