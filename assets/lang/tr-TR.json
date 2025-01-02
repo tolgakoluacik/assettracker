@@ -10,5 +10,13 @@
   "emailRequired" : "Email alanı gereklidir!",
   "password": "Şifre",
   "passwordRequired": "Şifre alanı gereklidir!",
-  "passwordMinLength": "Şifreniz minimum {} karakterden oluşmalıdır!"
+  "passwordMinLength": "Şifreniz minimum {} karakterden oluşmalıdır!",
+  "invalid-email": "Geçersiz bir e-posta adresi girdiniz.",
+  "user-disabled": "Bu kullanıcı hesabı devre dışı bırakılmış.",
+  "user-not-found": "Bu e-posta adresine ait bir kullanıcı bulunamadı.",
+  "wrong-password": "Hatalı şifre girdiniz. Lütfen tekrar deneyin.",
+  "email-already-in-use": "Bu e-posta adresi zaten kullanılıyor.",
+  "operation-not-allowed": "Bu işlem şu anda desteklenmiyor.",
+  "weak-password": "Şifreniz çok zayıf. Daha güçlü bir şifre belirleyin.",
+  "default-error": "Bir hata oluştu. Lütfen tekrar deneyin."
 }

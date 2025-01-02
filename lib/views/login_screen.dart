@@ -1,4 +1,4 @@
-import 'package:asset_tracker/views/splash_screen.dart';
+import 'package:asset_tracker/services/firebase_auth.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
 import 'package:asset_tracker/widgets/email_text_field.dart';
 import 'package:asset_tracker/widgets/empty_size.dart';
@@ -42,18 +42,14 @@ class LoginScreenState extends State<LoginScreen> {
                   LoginButton(
                     formKey: _formKey,
                     emailController: emailController,
+                      passwordController: passwordController,
                   ),
                   EmptySize.small,
                   CustomButtonField(
                     buttonText: 'register'.tr(),
                     icon: Icons.app_registration,
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SplashScreen(),
-                        ),
-                      );
+                        registerWithEmailAndPassword(emailController.text, passwordController.text, context);
                       },
                   ),
                 ],
