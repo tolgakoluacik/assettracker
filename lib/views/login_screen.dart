@@ -1,7 +1,11 @@
+import 'package:asset_tracker/services/firebase_auth.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
-import 'package:asset_tracker/widgets/custom_text_field.dart';
+import 'package:asset_tracker/widgets/email_text_field.dart';
+import 'package:asset_tracker/widgets/empty_size.dart';
+import 'package:asset_tracker/widgets/password_text_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import '../widgets/login_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,50 +16,46 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomTextField(
-              labelText: 'Email',
-              controller: emailController,
-            ),
-            const CustomTextField(
-              labelText: 'Password',
-              obscureText: true,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomButtonField(
-                  buttonText: 'Login',
-                  icon: Icons.login,
-                  onPressed: () {
-                    final email = emailController.text;
-
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(
-                          email: email,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                CustomButtonField(
-                  buttonText: 'Register',
-                  icon: Icons.login,
-                  onPressed: () {},
-                ),
-              ],
-            )
-          ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              EmailTextField(
+                controller: emailController,
+              ),
+              PasswordTextField(
+                controller: passwordController,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LoginButton(
+                    formKey: _formKey,
+                    emailController: emailController,
+                      passwordController: passwordController,
+                  ),
+                  EmptySize.small,
+                  CustomButtonField(
+                    buttonText: 'register'.tr(),
+                    icon: Icons.app_registration,
+                    onPressed: () {
+                        registerWithEmailAndPassword(emailController.text, passwordController.text, context);
+                      },
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

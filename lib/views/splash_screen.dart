@@ -1,6 +1,10 @@
+import 'package:asset_tracker/constants/app_constants.dart';
+import 'package:asset_tracker/constants/app_sizes.dart';
+import 'package:asset_tracker/widgets/empty_size.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'login_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +21,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   void _startSplashScreen() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: AppConstants.splashScreenWaitTime), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -27,18 +31,19 @@ class SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.amber,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.monitor_heart_outlined, size: 100, color: Colors.white),
-            SizedBox(height: 20),
-            Text(
-              'Asset Tracker',
-              style: TextStyle(color: Colors.white, fontSize: 24),
-            ),
+            const Icon(Icons.monitor_heart_outlined, size: AppIconSizes.medium, color: Colors.deepPurple),
+            EmptySize.small,
+            Text("appName".tr(),
+              style: const TextStyle(color: Colors.deepPurple,
+              fontSize: AppTextSizes.medium,
+              fontWeight: FontWeight.bold),
+            )
           ],
         ),
       ),

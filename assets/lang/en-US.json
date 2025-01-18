@@ -1,0 +1,22 @@
+{
+  "welcome": "Welcome",
+  "hello": "Hello {name}!",
+  "appName": "Asset Tracker",
+  "login": "Login",
+  "register": "Register",
+  "logout": "Logout",
+  "email": "Email",
+  "emailValid": "Enter valid email, please!",
+  "emailRequired" : "Email is required!",
+  "password": "Password",
+  "passwordRequired": "Password is required!",
+  "passwordMinLength": "Password has to minimum {} character!",
+  "invalid-email": "You have entered an invalid email address.",
+  "user-disabled": "This user account has been disabled.",
+  "user-not-found": "No user found with this email address.",
+  "wrong-password": "Incorrect password. Please try again.",
+  "email-already-in-use": "This email address is already in use.",
+  "operation-not-allowed": "This operation is not allowed at the moment.",
+  "weak-password": "Your password is too weak. Please choose a stronger one.",
+  "default-error": "An error occurred. Please try again."
+}
