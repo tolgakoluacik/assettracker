@@ -1,5 +1,5 @@
 import 'package:asset_tracker/constants/app_edge_insets.dart';
-import 'package:asset_tracker/views/splash_screen.dart';
+import 'package:asset_tracker/views/home.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const SplashScreen(),
+        home: const HomeScreen(email: 'tolgakoluacik@gmail.com')
       ),
     );
   }
