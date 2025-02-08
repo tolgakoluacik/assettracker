@@ -1,31 +1,31 @@
 class Currency {
   final String code;
-  final double? alis;
-  final double? satis;
-  final String tarih;
-  final double? dusuk;
-  final double? yuksek;
-  final double? kapanis;
+  final double? buy;
+  final double? sell;
+  final String date;
+  final double? low;
+  final double? high;
+  final double? end;
 
   Currency({
     required this.code,
-    this.alis,
-    this.satis,
-    required this.tarih,
-    this.dusuk,
-    this.yuksek,
-    this.kapanis,
+    this.buy,
+    this.sell,
+    required this.date,
+    this.low,
+    this.high,
+    this.end,
   });
 
   factory Currency.fromJson(Map<String, dynamic> json) {
     return Currency(
       code: json['code'] ?? '',
-      alis: (json['alis'] != null) ? double.tryParse(json['alis'].toString()) : null,
-      satis: (json['satis'] != null) ? double.tryParse(json['satis'].toString()) : null,
-      tarih: json['tarih'] ?? '',
-      dusuk: (json['dusuk'] != null) ? double.tryParse(json['dusuk'].toString()) : null,
-      yuksek: (json['yuksek'] != null) ? double.tryParse(json['yuksek'].toString()) : null,
-      kapanis: (json['kapanis'] != null) ? double.tryParse(json['kapanis'].toString()) : null,
+      buy: (json['alis'] != null) ? double.tryParse(json['alis'].toString()) : null,
+      sell: (json['satis'] != null) ? double.tryParse(json['satis'].toString()) : null,
+      date: json['tarih'] ?? '',
+      low: (json['dusuk'] != null) ? double.tryParse(json['dusuk'].toString()) : null,
+      high: (json['yuksek'] != null) ? double.tryParse(json['yuksek'].toString()) : null,
+      end: (json['kapanis'] != null) ? double.tryParse(json['kapanis'].toString()) : null,
     );
   }
 }
