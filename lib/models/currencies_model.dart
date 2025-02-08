@@ -1,23 +1,22 @@
-import '../constants/app_currencies.dart';
+import 'dart:convert';
+
 import 'currency_model.dart';
 
 class Currencies {
-  final Map<String, CurrencyData> currencies;
+  final Map<String, Currency> currencyMap;
 
-  Currencies({required this.currencies});
+  Currencies({required this.currencyMap});
 
-  factory Currencies.fromJson(Map<String, dynamic> json) {
-    Map<String, CurrencyData> currencyMap = {};
-    List<dynamic> data = json['data'];
+  factory Currencies.fromJson(String source) {
+    final Map<String, dynamic> jsonData = json.decode(source);
+    final Map<String, Currency> currencies = {};
 
-    for (var item in data) {
-      String code = item['code'];
-
-      if (AppCurrencies.currencies.containsKey(code)) {
-        currencyMap[code] = CurrencyData.fromJson(item);
+    jsonData.forEach((key, value) {
+      if (value is Map<String, dynamic>) {
+        currencies[key] = Currency.fromJson(value);
       }
-    }
+    });
 
-    return Currencies(currencies: currencyMap);
+    return Currencies(currencyMap: currencies);
   }
 }
