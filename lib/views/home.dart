@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../constants/theme_colors.dart';
 import '../models/currencies_model.dart';
+import '../models/currency_model.dart';
 
 class HomeScreen extends StatefulWidget {
   final String email;
@@ -18,6 +19,8 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   late final WebSocketChannel _channel;
   Currencies _currencies = Currencies(currencyMap: {});
+  final TextEditingController _searchController = TextEditingController();
+  List<Currency> filteredCurrencies = [];
 
   @override
   void initState() {
@@ -32,10 +35,11 @@ class HomeScreenState extends State<HomeScreen> {
       } else if (event.toString().startsWith('42')) {
         try {
           final currencyData = jsonDecode(event.substring(2))[1]["data"];
-
+          print(currencyData);
           if (currencyData != null && currencyData is Map<String, dynamic>) {
             setState(() {
               _currencies = Currencies.fromJson(jsonEncode(currencyData));
+              onSearch(_searchController.text);
             });
           }
 
@@ -55,17 +59,61 @@ class HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  void onSearch(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        filteredCurrencies = _currencies.currencyMap.values.toList();
+      } else {
+        filteredCurrencies = _currencies.currencyMap.values
+            .where((currency) =>
+        currency.code.toLowerCase().contains(query.toLowerCase()) ||
+            AppCurrencies.currencies[currency.code]!.toLowerCase().contains(query.toLowerCase()) ?? false)
+            .toList();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBackground,
-      body: _currencies.currencyMap.isEmpty
+      appBar: AppBar(
+        title: const Text('Asset Tracker', style: TextStyle(color: AppColors.mainTextColor),),
+        backgroundColor: AppColors.appBackground,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 250,
+              child: TextField(
+                controller: _searchController,
+                onChanged: (query) {
+                  onSearch(query);
+                },
+                style: const TextStyle(color: AppColors.mainTextColor),
+                decoration: InputDecoration(
+                  hintText: 'Search Currency',
+                  hintStyle: const TextStyle(color: AppColors.mainTextColor),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.all(8),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: filteredCurrencies.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-        itemCount: _currencies.currencyMap.length,
+        itemCount: filteredCurrencies.length,
         itemBuilder: (context, index) {
-          final currency = _currencies.currencyMap.values.elementAt(index);
+          final currency = filteredCurrencies[index];
           final currencyName = AppCurrencies.currencies[currency.code] ?? currency.code;
           final buyValue = currency.buy ?? 'Yok';
           final sellValue = currency.sell ?? 'Yok';
@@ -90,14 +138,14 @@ class HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               subtitle: Text(
-                'Alış: $buyValue, Satış: $sellValue',
+                'Buy: $buyValue, Sell: $sellValue',
                 style: const TextStyle(
                   color: AppColors.mainTextColor,
                   fontSize: 14,
                 ),
               ),
               trailing: Text(
-                'Kapanış: $endValue',
+                'End: $endValue',
                 style: const TextStyle(
                   color: AppColors.mainTextColor,
                   fontSize: 14,
