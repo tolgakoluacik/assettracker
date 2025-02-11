@@ -1,4 +1,4 @@
-import 'package:asset_tracker/services/firebase_auth.dart';
+import 'package:asset_tracker/services/auth_service.dart';
 import 'package:asset_tracker/widgets/custom_button.dart';
 import 'package:asset_tracker/widgets/email_text_field.dart';
 import 'package:asset_tracker/widgets/empty_size.dart';
@@ -49,7 +49,7 @@ class LoginScreenState extends State<LoginScreen> {
                     buttonText: 'register'.tr(),
                     icon: Icons.app_registration,
                     onPressed: () {
-                        registerWithEmailAndPassword(emailController.text, passwordController.text, context);
+                        AuthService.authService.registerWithEmailAndPassword(emailController.text, passwordController.text);
                       },
                   ),
                 ],
